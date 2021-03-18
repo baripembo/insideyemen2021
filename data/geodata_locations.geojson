@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Al Hudaydah",
+        "icon": "icon_marker",
+        "iconSize": 0.3,
+        "textAnchor": "top",
+        "textOffset": [0, 0.7],
+        "textMaxWidth": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.97079,
+          14.79096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bayt Al Faqih",
+        "icon": "icon_marker",
+        "iconSize": 0.3,
+        "textAnchor": "top",
+        "textOffset": [0, 0.7],
+        "textMaxWidth": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.31669,
+          14.51628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ta'izz City",
+        "icon": "icon_marker",
+        "iconSize": 0.3,
+        "textAnchor": "top",
+        "textOffset": [0, 0.7],
+        "textMaxWidth": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.0178,
+          13.5776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dar Sad",
+        "icon": "icon_marker",
+        "iconSize": 0.3,
+        "textAnchor": "top",
+        "textOffset": [0, 0.7],
+        "textMaxWidth": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.98661,
+          12.894183
+        ]
+      }
+    }
+  ]
+}
