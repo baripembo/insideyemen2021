@@ -61,7 +61,8 @@ main {
   height: 100vh;
   width: 100%; }
 
-#scrolly {
+#scrolly,
+#scrolly2 {
   position: relative;
   background-color: #F3F3F3; }
 
@@ -75,6 +76,11 @@ article {
     color: #FFF;
     margin-top: 15px; }
 
+#video-container {
+  display: none;
+}
+
+#video-container figure,
 #map-container figure {
   position: -webkit-sticky;
   position: sticky;

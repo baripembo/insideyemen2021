@@ -166,10 +166,6 @@ img {
   align-items: center;
 }
 
-.background-black {
-  
-}
-
 .portrait-quote {
   width: 35%;
   clear: none;
@@ -205,9 +201,9 @@ img {
   height: 160vh;
 }
 
-.portrait-box.box.video-80 {
+/*.portrait-box.box.video-80 {
   height: 70vh;
-}
+}*/
 
 .portrait-box.box._100vh {
   position: relative;
@@ -233,10 +229,11 @@ img {
   height: 200vh;
 }
 
-.portrait-box.box._650vh {
+.portrait-box.box._700vh {
   position: static;
+  z-index: 100000;
   display: block;
-  height: 650vh;
+  height: 669vh;
 }
 
 .portrait-box.box._150vh {
@@ -481,6 +478,7 @@ img {
   padding-left: 0px;
   -o-object-position: -10% 50%;
   object-position: -10% 50%;
+  width: 100%;
 }
 
 .bg-portraits.abdiyah {
@@ -1003,7 +1001,7 @@ img {
 
   .portrait-box.box.video-80 {
     display: block;
-    height: 100vh;
+    height: 80vh;
   }
 
   .portrait-box.box._100vh {
@@ -1068,6 +1066,7 @@ img {
     margin-left: 0vw;
     -o-object-position: 0% 50%;
     object-position: 0% 50%;
+    width: 100%;
   }
 
   .image-wrap {
@@ -1184,6 +1183,7 @@ img {
   .bg-portraits.custom.hala {
     -o-object-position: 0% 50%;
     object-position: 0% 50%;
+    width: 100%;
   }
 
   .text.mobile {
@@ -1373,6 +1373,7 @@ img {
     display: block;
     -o-object-position: 65% 50%;
     object-position: 65% 50%;
+    width: 100%;
   }
 
   .bg-portraits.abdiyah {

@@ -1,12 +1,11 @@
-var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile, scrollDir;
-var currentIndex = -1;
-var lastIndex = currentIndex;
+var map, scroller, scroller2, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile;
+var currentIndex = 0;
 
 $( document ).ready(function() {
   const DATA_URL = 'data/';
   var dataUrls = ['route1.geojson', 'route2.geojson', 'route3.geojson'];
   geoDataArray = new Array(dataUrls.length);
-  mapboxgl.accessToken = 'pk.eyJ1IjoiaHVtZGF0YSIsImEiOiJja2FvMW1wbDIwMzE2MnFwMW9teHQxOXhpIn0.Uri8IURftz3Jv5It51ISAA';
+  mapboxgl.accessToken = 'pk.eyJ1IjoieWFuamFhLWRlc2lnbiIsImEiOiJja2wwYWgyOXgyZGF3MnZxb2hqcHN6b3Y0In0.mY6k-2eGFgppETtvEqSLJw';
   viewportWidth = window.innerWidth;
   viewportHeight = window.innerHeight;
   isMobile = (viewportWidth<767) ? true : false;
@@ -92,7 +91,7 @@ $( document ).ready(function() {
     var zoomLevel = 6.13;
     map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/humdata/ckfx2jgjd10qx1bnzkla9px41/',
+      style: 'mapbox://styles/yanjaa-design/ckmm3n3f21yq917qsvgze3wq0',
       center: [48.21908, 15.53492],
       minZoom: 1,
       zoom: zoomLevel,
@@ -147,6 +146,7 @@ $( document ).ready(function() {
 
   function initJourney() {
     scroller = scrollama();
+    scroller2 = scrollama();
     main = d3.select('main');
     scrolly = main.select('#scrolly');
     figure = scrolly.select('figure');
@@ -165,15 +165,25 @@ $( document ).ready(function() {
       .onStepEnter(handleStepEnter)
       .onStepExit(handleStepExit);
 
+    scroller2
+      .setup({
+        step: '.step',
+        offset: 0.7,
+        debug: false
+      })
+      .onStepEnter(function(response) { })
+      .onStepExit(function(response) { 
+        // if ($(response.element).parent().parent().attr('id')=='scrolly2' && response.direction=='up') {
+        //   $('#video-container').fadeOut();
+        // }
+      });
+
     // setup resize event
     window.addEventListener('resize', handleResize);
   }
 
   function handleStepEnter(response) {
-    lastIndex = currentIndex;
     currentIndex = response.index;
-    scrollDir = (lastIndex<currentIndex) ? 'down' : 'up';
-    //console.log('handleStepEnter', response.index, scrollDir)
     var chapter = config.chapters[currentIndex];
     var location = (chapter!=undefined) ? chapter.location : '';
 
@@ -196,31 +206,22 @@ $( document ).ready(function() {
     else {
       //zoom into adan
       map.flyTo(location);
-      // map.on('moveend', function(e){
-      //   if ((scrollDir=='down'&&currentIndex==3) || (scrollDir=='up'&&currentIndex==0)) {
-          
-      //   }
-      // });
     }
   }
 
   function handleStepExit(response) {
-    console.log('handleStepExit', response.index, scrollDir)
-    if ((scrollDir=='down'&&response.index==4) || (scrollDir=='up'&&response.index==0)) {
-      console.log('map end', response.index);
-      parent.postMessage(true, "*");
+    if (response.index==0) {
+      var location = {
+        center: [48.21908, 15.53492],
+        zoom: 6.13,
+        pitch: 0,
+        bearing: 0
+      };
+      map.flyTo(location);
     }
-    // if (response.index==0 || response.index==config.chapters.length-1) {
-    //   if (response.index==0) {
-    //     var location = {
-    //       center: [48.21908, 15.53492],
-    //       zoom: 6.13,
-    //       pitch: 0,
-    //       bearing: 0
-    //     };
-    //     map.flyTo(location);
-    //   }
-    // }
+    if (response.index==config.chapters.length && $(response.element).parent().parent().attr('id')=='scrolly') {
+      $('#video-container').fadeIn('slow');
+    }
   }
 
   // generic window resize listener event
@@ -239,7 +240,12 @@ $( document ).ready(function() {
       .style("height", figureHeight + "px")
       .style("top", figureMarginTop + "px");
 
+    $('#video-container').find('figure')
+      .css("height", figureHeight + "px")
+      .css("top", figureMarginTop + "px");
+
     scroller.resize();
+    scroller2.resize();
   }
 
   function setupStickyfill() {
