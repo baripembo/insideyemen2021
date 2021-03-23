@@ -229,13 +229,6 @@ img {
   height: 200vh;
 }
 
-.portrait-box.box._700vh {
-  position: static;
-  z-index: 100000;
-  display: block;
-  height: 669vh;
-}
-
 .portrait-box.box._150vh {
   position: static;
   z-index: 300000;
