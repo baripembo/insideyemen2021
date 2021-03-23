@@ -201,9 +201,9 @@ img {
   height: 160vh;
 }
 
-/*.portrait-box.box.video-80 {
+.portrait-box.box.video-80 {
   height: 70vh;
-}*/
+}
 
 .portrait-box.box._100vh {
   position: relative;
